@@ -76,7 +76,6 @@
             // 
             // tmReadSeconds
             // 
-            this.tmReadSeconds.Interval = 550;
             this.tmReadSeconds.Tick += new System.EventHandler(this.tmReadSeconds_Tick);
             // 
             // frmMain

@@ -57,12 +57,12 @@ namespace PCRGuildAutoBattleHelper
 
             if (myhandle != IntPtr.Zero)
             {
-                for(int i = 0; i < 10; i++)
+                for(int i = 0; i < 20; i++)
                 {
                     PostMessage(myhandle, WM_LBUTTONDOWN, 0, x + (y << 16));
                     PostMessage(myhandle, WM_LBUTTONUP, 0, x + (y << 16));
                     Thread.Sleep(1);
-                }             
+                }                
                 return true;
             }
             return false;
@@ -274,86 +274,78 @@ namespace PCRGuildAutoBattleHelper
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
                     //=======================从这里开始写轴===========================
-                    if (rz == "1:06")
+                    if (rz == "1:03")
                     {
                         //真琴
-                        ClickCharacter(3);
-                        //---------必要间隔-----------
-                        Thread.Sleep(1);
-                        //香织
                         ClickCharacter(1);
-                        //---------必要间隔-----------
+                        //---------------------------
                         Thread.Sleep(1);
-                        //日和莉
+                        //TP弓
+                        ClickCharacter(5);
+                        //---------------------------
+                        Thread.Sleep(1);
+                        //铃奈
                         ClickCharacter(4);
-                    }                  
-                    if (rz == "0:57")
-                    {
-                        //望
-                        ClickCharacter(2);                      
+
                     }
-                    if (rz == "0:50")
+                    if (rz == "0:58")
                     {
-                        //香织
-                        ClickCharacter(1);
-                        //---------必要间隔-----------
-                        Thread.Sleep(1);
-                        //日和莉
-                        ClickCharacter(4);
+                        //由加莉
+                        ClickCharacter(2);
+                    }
+                    if (rz == "0:49")
+                    {
+                        //TP弓
+                        ClickCharacter(5);
                     }
                     if (rz == "0:47")
                     {
                         //真琴
+                        ClickCharacter(1);
+                        //---------------------------
+                        Thread.Sleep(1);
+                        //铃奈
+                        ClickCharacter(4);
+                        //---------------------------
+                        Thread.Sleep(1);
+                        //深月
                         ClickCharacter(3);
                     }
-                    if (rz == "0:45")
+                    if (rz == "0:31")
                     {
-                        //深月
+                        //TP弓
                         ClickCharacter(5);
                     }
-                    if (rz == "0:34")
+                    if (rz == "0:27")
                     {
-                        //香织
+                        //真琴
                         ClickCharacter(1);
-                        //---------必要间隔-----------
-                        Thread.Sleep(1);
-                        //日和莉
-                        ClickCharacter(4);
                     }
-                    if (rz == "0:29")
+                    if (rz == "0:23")
                     {
-                        //望
+                        //由加莉
                         ClickCharacter(2);
                     }
-                    if (rz == "0:26")
+                    if (rz == "0:14")
                     {
                         //真琴
-                        ClickCharacter(3);
-                    }
-                    if (rz == "0:16")
-                    {
-                        //香织
                         ClickCharacter(1);
-                        //---------必要间隔-----------
+                    }
+                    if (rz == "0:12")
+                    {
+                        //TP弓
+                        ClickCharacter(5);
+                        //---------------------------
                         Thread.Sleep(1);
-                        //日和莉
+                        //铃奈
                         ClickCharacter(4);
                     }
-                    if (rz == "0:11")
+                    if (rz == "0:10")
                     {
                         //深月
-                        ClickCharacter(5);
-                    }
-                    if (rz == "0:06")
-                    {
-                        //真琴
                         ClickCharacter(3);
                     }
-                    if (rz == "0:01")
-                    {
-                        //香织
-                        ClickCharacter(1);
-                    }                 
+
                 }
                 else
                 {
