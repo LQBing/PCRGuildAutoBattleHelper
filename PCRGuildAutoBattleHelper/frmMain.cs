@@ -268,6 +268,81 @@ namespace PCRGuildAutoBattleHelper
                 {
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
+                    DateTime dt = new DateTime();
+                    dt = Convert.ToDateTime(rz);
+                    //=======================从这里开始写轴===========================
+                    if (dt == Convert.ToDateTime("01:05"))
+                    {
+                        //香织
+                        ClickCharacter(2);
+                    }
+                    if (dt == Convert.ToDateTime("01:02"))
+                    {
+                        //真琴
+                        ClickCharacter(3);
+                    }
+                    if (dt == Convert.ToDateTime("00:49"))
+                    {
+                        //宫子
+                        ClickCharacter(1);
+                        //香织
+                        ClickCharacter(2);
+                    }
+                    if (dt == Convert.ToDateTime("00:47"))
+                    {
+                        //深月
+                        ClickCharacter(5);
+                    }
+                    if (dt == Convert.ToDateTime("00:45"))
+                    {
+                        //可可萝
+                        ClickCharacter(4);
+                    }
+                    if (dt == Convert.ToDateTime("00:43"))
+                    {
+                        //真琴
+                        ClickCharacter(3);
+                    }
+                    if (dt == Convert.ToDateTime("00:32"))
+                    {
+                        //香织
+                        ClickCharacter(2);
+                    }
+                    if (dt == Convert.ToDateTime("00:21"))
+                    {
+                        //真琴
+                        ClickCharacter(3);
+                    }
+                    if (dt == Convert.ToDateTime("00:15"))
+                    {
+                        //深月
+                        ClickCharacter(5);
+                    }
+                    if (dt == Convert.ToDateTime("00:13"))
+                    {
+                        //香织
+                        ClickCharacter(2);
+                        //宫子
+                        ClickCharacter(1);                       
+                    }
+                    if (dt == Convert.ToDateTime("00:09"))
+                    {
+                        //可可萝
+                        ClickCharacter(4);
+                    }
+                    if (dt == Convert.ToDateTime("00:03"))
+                    {
+                        //真琴
+                        ClickCharacter(3);
+                        //香织
+                        ClickCharacter(2);
+                    }
+                    //因为我是3星宫子，所以补了一下伤害，其实还可以更高，注意四星狼
+                    if (dt == Convert.ToDateTime("00:01"))
+                    {
+                        //宫子
+                        ClickCharacter(1);
+                    }
                 }
                 else
                 {
@@ -275,7 +350,7 @@ namespace PCRGuildAutoBattleHelper
                 }
             }
             AddTextToBoard(rz);
-            //=======================从这里开始写轴===========================
+            
 
         }
         //========================计时器事件===========================
