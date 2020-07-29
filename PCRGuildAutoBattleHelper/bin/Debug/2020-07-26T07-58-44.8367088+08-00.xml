@@ -1,0 +1,6 @@
+﻿<error: currently only 1-bit black/white or 32bit RGB images are accepted for barcode recognition><?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="aocr.xsl"?>
+<asprise-ocr input="F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\time81.bmp" time-start="2020-07-26 07:58:44" version-format="15" runtime="Asprise OCR 15.3 - Evaluation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://asprise.com/ocr/files/schema/15/aocr.xsd">
+  <page no="0" width="44" height="19" words="0" confidence="0" time-taken="0.001">
+  </page>
+</asprise-ocr>

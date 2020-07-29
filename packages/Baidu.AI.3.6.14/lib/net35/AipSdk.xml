@@ -1,0 +1,1662 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AipSdk</name>
+    </assembly>
+    <members>
+        <member name="T:Baidu.Aip.AipException">
+            <summary>
+                百度AI异常类
+            </summary>
+        </member>
+        <member name="T:Baidu.Aip.AipHttpRequest">
+            <summary>
+                Http请求包装
+            </summary>
+        </member>
+        <member name="F:Baidu.Aip.AipHttpRequest.Uri">
+            <summary>
+                不带query
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.AipHttpRequest.GenerateDevWebRequest(System.String,System.Int32)">
+            <summary>
+                生成AI的Web请求
+            </summary>
+            <param name="token"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.AipHttpRequest.GenerateCloudRequest(System.String,System.String,System.Int32)">
+            <summary>
+                生成云的Web请求
+            </summary>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.AipHttpRequest.GenerateSpeechRequest(System.Int32)">
+            <summary>
+                生成语音的Web请求
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Baidu.Aip.AipServiceBase.Timeout">
+            <summary>
+            in millisecond
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.AipServiceBase.Report(System.Collections.Generic.IEnumerable{System.Collections.Generic.Dictionary{System.String,System.Object}})">
+            <summary>
+            反馈接口
+            用于用户反馈模型的效果，用户必须至少反馈一个 true/false 来表示对该结果是否满意，同时可选择反馈详细的评价。
+            http://ai.baidu.com/docs#/ImageCensoring-API/top
+            </summary>
+            <param name="data">
+            demo: 具体参考文档
+               {
+                   "api_url": "https://aip.baidubce.com/rest/2.0/antiporn/v1/detect",
+                   "image_logid": 123456,
+                   "level": 1,
+                   "correct": 1
+               }
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Auth.OpenApiFetchToken(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+                获取OpenApi的Token
+            </summary>
+            <param name="ak"></param>
+            <param name="sk"></param>
+            <param name="throws">是否是否throw</param>
+            <param name="debugLog"></param>
+            <returns>成功返回token, 失败返回null</returns>
+        </member>
+        <member name="M:Baidu.Aip.Auth.CanonicalRequest(Baidu.Aip.AipHttpRequest)">
+            <summary>
+                签名 host 和 Content-Type
+            </summary>
+            <param name="aipHttpRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Auth.Hex(System.Byte[])">
+            <summary>
+                16进制表示
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.BodyAnalysis.Body">
+            <summary>
+            人体属性分析
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.BodyAnalysis.Body.BodyAnalysis(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             人体关键点识别接口
+             对于输入的一张图片（可正常解码，且长宽比适宜），**检测图片中的所有人体，输出每个人体的21个主要关键点，包含头顶、五官、脖颈、四肢等部位，同时输出人体的坐标信息和数量**。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.BodyAnalysis.Body.BodyAttr(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.BodyAnalysis.Body.BodyNum(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.BodyAnalysis.Body.Gesture(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             手势识别接口
+             识别图片中的手势类型，返回手势名称、手势矩形框、概率分数，可识别24种常见手势，适用于手势特效、智能家居手势交互等场景**。支持的24类手势列表：拳头、OK、祈祷、作揖、作别、单手比心、点赞、Diss、我爱你、掌心向上、双手比心（3种）、数字（9种）、Rock、竖中指。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.BodyAnalysis.Body.BodySeg(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.BodyAnalysis.Body.DriverBehavior(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.BodyAnalysis.Body.BodyTracking(System.Byte[],System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="T:Baidu.Aip.ContentCensor.AntiPorn">
+            <summary>
+                黄反相关
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.AntiPorn.Detect(System.Byte[])">
+            <summary>
+                黄反识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns>识别结果</returns>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.AntiPorn.DetectGif(System.Byte[])">
+            <summary>
+                GIF色情图像识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns>识别结果</returns>
+        </member>
+        <member name="T:Baidu.Aip.ContentCensor.AntiTerror">
+            <summary>
+                暴恐
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.AntiTerror.Detect(System.Byte[])">
+            <summary>
+                暴恐识别
+            </summary>
+            <param name="image">图像字节数组</param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.ContentCensor.ImageCensor">
+            <summary>
+            图像审核
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.ImageCensor.UserDefined(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            图像审核接口
+            为用户提供色情识别、暴恐识别、政治敏感人物识别、广告识别、图像垃圾文本识别（反作弊）、恶心图像识别等一系列图像识别接口的一站式服务调用，
+            并且支持用户在控制台中自定义配置所有接口的报警阈值和疑似区间，上传自定义文本黑库和敏感人物名单等。
+            相比于组合服务接口，本接口除了支持自定义配置外，还对返回结果进行了总体的包装，按照用户在控制台中配置的规则直接返回是否合规，如果不合规则指出具体不合规的内容。
+            </summary>
+            <param name="image"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.ImageCensor.UserDefinedUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            图像审核接口
+            为用户提供色情识别、暴恐识别、政治敏感人物识别、广告识别、图像垃圾文本识别（反作弊）、恶心图像识别等一系列图像识别接口的一站式服务调用，
+            并且支持用户在控制台中自定义配置所有接口的报警阈值和疑似区间，上传自定义文本黑库和敏感人物名单等。
+            相比于组合服务接口，本接口除了支持自定义配置外，还对返回结果进行了总体的包装，按照用户在控制台中配置的规则直接返回是否合规，如果不合规则指出具体不合规的内容。
+            </summary>
+            <param name="imageUrl"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.ContentCensor.Solution">
+            <summary>
+                图像审核解决方案
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.Solution.Combo(System.String,System.String[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                图像审核组合接口
+            </summary>
+            <param name="imageUrl">图片URL</param>
+            <param name="scenes">需要调用的服务</param>
+            <param name="options">
+                服务参数。
+                key为服务类型，value为json string或dictionary
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.Solution.Combo(System.Byte[],System.String[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                图像审核组合接口
+            </summary>
+            <param name="image">图像原始字节数据</param>
+            <param name="scenes">调用的服务列表</param>
+            <param name="options">额外参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.Solution.FaceAudit(System.Byte[][],System.Nullable{System.Int64})">
+            <summary>
+                头像审核
+            </summary>
+            <param name="images"></param>
+            <param name="configId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.Solution.FaceAudit(System.String[],System.Nullable{System.Int64})">
+            <summary>
+                头像审核
+            </summary>
+            <param name="images"></param>
+            <param name="configId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.ContentCensor.TextCensor">
+            <summary>
+            文本审核
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.TextCensor.AntiSpam(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             文本审核接口
+             运用业界领先的深度学习技术，判断一段文本内容是否符合网络发文规范，实现自动化、智能化的文本审核。审核内容目前分为5大方向：色情文本、政治敏感、恶意推广、网络暴恐、低俗辱骂。v2正式版支持审核文本的黑白名单配置，且可通过调整阈值控制审核的松紧度标准，大幅度满足个性化文本内容审核的需求，详细配置说明详见AI官网社区说明帖。
+             </summary>
+             <param name="content">待审核的文本内容，不可为空，长度不超过20000字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ContentCensor.TextCensor.TextCensorUserDefined(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            内容审核文本API接口
+            </summary>
+            <param name="text"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.StreamToString(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+                read stream to string. Will close the steam !
+            </summary>
+            <param name="ss"></param>
+            <param name="enc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.ParseQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+                query dictionary to string
+            </summary>
+            <param name="querys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.UriEncode(System.String,System.Boolean)">
+            <summary>
+                UriEncode
+            </summary>
+            <param name="input"></param>
+            <param name="encodeSlash"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.Md5(System.String)">
+            <summary>
+                MD5
+            </summary>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.StreamToBytes(System.IO.Stream)">
+            <summary>
+                Stream to bytes
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Utils.UnixTimestamp">
+            <summary>
+                Timestamp
+            </summary>
+            <returns>timestamp in milliseconds</returns>
+        </member>
+        <member name="M:Baidu.Aip.EasyDL.EasyDL.requestImage(System.String,System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            图像类请求接口
+            </summary>
+            <param name="fullurl">请求地址</param>
+            <param name="image">声音数据原始二进制</param>
+            <param name="options">可选参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.EasyDL.EasyDL.requestSound(System.String,System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            声音类请求接口
+            </summary>
+            <param name="fullurl">请求地址</param>
+            <param name="sound">声音数据原始二进制</param>
+            <param name="options">可选参数</param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.Face.Face">
+            <summary>
+            人脸识别
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.Match(Newtonsoft.Json.Linq.JArray)">
+            <summary>
+            人脸对比接口
+            两张人脸图片相似度对比：比对两张图片中人脸的相似度，并返回相似度分值
+            </summary>
+            <param name="faces">
+            数组成员必须是JObject，每个JObject均为string:string的key:value对，具体key如下：
+                     image: 必须，图片信息(**总数据大小应小于10M**)，图片上传方式根据image_type来判断
+                     image_type: 必须，图片类型 **BASE64**:图片的base64值，base64编码后的图片数据，需urlencode，编码后的图片大小不超过2M；**URL**:图片的 URL地址( 可能由于网络等原因导致下载图片时间过长)**；FACE_TOKEN**: 人脸图片的唯一标识，调用人脸检测接口时，会为每个人脸图片赋予一个唯一的FACE_TOKEN，同一张图片多次检测得到的FACE_TOKEN是同一个
+                     face_type: 可选，人脸的类型 LIVE表示生活照：通常为手机、相机拍摄的人像图片、或从网络获取的人像图片等 IDCARD表示身份证芯片照：二代身份证内置芯片中的人像照片 WATERMARK表示带水印证件照：一般为带水印的小图，如公安网小图 CERT表示证件照片：如拍摄的身份证、工卡、护照、学生证等证件图片 默认LIVE
+                     quality_control: 可选，质量控制 NONE: 不进行控制 LOW:较低的质量要求 NORMAL: 一般的质量要求 HIGH: 较高的质量要求 默认NONE
+                     liveness_control: 可选，活体控制 NONE: 不进行控制 LOW:较低的活体要求(高通过率 低攻击拒绝率) NORMAL: 一般的活体要求(平衡的攻击拒绝率, 通过率) HIGH: 较高的活体要求(高攻击拒绝率 低通过率) 默认NONE
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.Faceverify(Newtonsoft.Json.Linq.JArray)">
+             <summary>
+             在线活体检测接口
+             </summary>
+             <param name="faces">
+             数组成员必须是JObject，每个JObject均为string:string的key:value对，具体key如下：
+                      image: 必须，图片信息(**总数据大小应小于10M**)，图片上传方式根据image_type来判断
+                      image_type: 必须，图片类型 **BASE64**:图片的base64值，base64编码后的图片数据，需urlencode，编码后的图片大小不超过2M；**URL**:图片的 URL地址( 可能由于网络等原因导致下载图片时间过长)**；FACE_TOKEN**: 人脸图片的唯一标识，调用人脸检测接口时，会为每个人脸图片赋予一个唯一的FACE_TOKEN，同一张图片多次检测得到的FACE_TOKEN是同一个
+                      face_field: 可选，包括age,beauty,expression,faceshape,gender,glasses,landmark,race,quality,facetype,parsing信息，逗号分隔，默认只返回face_token、活体数、人脸框、概率和旋转角度
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.Detect(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.Search(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.MultiSearch(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.UserAdd(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.UserUpdate(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Face.Face.FaceDelete(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             人脸删除接口
+             </summary>
+             <param name="userId">用户id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="faceToken">需要删除的人脸图片token，（由数字、字母、下划线组成）长度限制64B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.UserGet(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             用户信息查询接口
+             </summary>
+             <param name="userId">用户id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.FaceGetlist(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             获取用户人脸列表接口
+             </summary>
+             <param name="userId">用户id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.GroupGetusers(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             获取用户列表接口
+             </summary>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>start</c>: 默认值0，起始序号 </item>
+                       <item>  <c>length</c>: 返回数量，默认值100，最大值1000 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.UserCopy(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             复制用户接口
+             </summary>
+             <param name="userId">用户id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>src_group_id</c>: 从指定组里复制信息 </item>
+                       <item>  <c>dst_group_id</c>: 需要添加用户的组id </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.UserDelete(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             删除用户接口
+             </summary>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="userId">用户id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.GroupAdd(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             创建用户组接口
+             </summary>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.GroupDelete(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             删除用户组接口
+             </summary>
+             <param name="groupId">用户组id（由数字、字母、下划线组成），长度限制128B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Face.Face.GroupGetlist(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             组列表查询接口
+             </summary>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>start</c>: 默认值0，起始序号 </item>
+                       <item>  <c>length</c>: 返回数量，默认值100，最大值1000 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Face.Face.PersonVerify(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Face.Face.VideoSessioncode(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             语音校验码接口接口
+             </summary>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>appid</c>: 百度云创建应用时的唯一标识ID </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="T:Baidu.Aip.ImageClassify.ImageClassify">
+            <summary>
+            图像识别
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.AdvancedGeneral(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             通用物体识别接口
+             该请求用于通用物体及场景识别，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的多个物体及场景标签。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.DishDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             菜品识别接口
+             该请求用于菜品识别。即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片的菜品名称、卡路里信息、置信度。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>top_num</c>: 返回预测得分top结果数，默认为5 </item>
+                       <item>  <c>filter_threshold</c>: 默认0.95，可以通过该参数调节识别效果，降低非菜识别率. </item>
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.CarDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             车辆识别接口
+             该请求用于检测一张车辆图片的具体车型。即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片的车辆品牌及型号。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>top_num</c>: 返回预测得分top结果数，默认为5 </item>
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.LogoSearch(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             logo商标识别接口
+             该请求用于检测和识别图片中的品牌LOGO信息。即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中LOGO的名称、位置和置信度。当效果欠佳时，可以建立子库（在[控制台](https://console.bce.baidu.com/ai/#/ai/imagerecognition/overview/index)创建应用并申请建库）并通过调用logo入口接口完成自定义logo入库，提高识别效果。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>custom_lib</c>: 是否只使用自定义logo库的结果，默认false：返回自定义库+默认库的识别结果 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.LogoAdd(System.Byte[],System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             logo商标识别—添加接口
+             使用入库接口请先在[控制台](https://console.bce.baidu.com/ai/#/ai/imagerecognition/overview/index)创建应用并申请建库，建库成功后方可正常使用。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="brief">brief，检索时带回。此处要传对应的name与code字段，name长度小于100B，code长度小于150B</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.LogoDeleteByImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             logo商标识别—删除接口
+             使用删除接口请先在[控制台](https://console.bce.baidu.com/ai/#/ai/imagerecognition/overview/index)创建应用并申请建库，建库成功后先调用入库接口完成logo图片入库，删除接口用户在已入库的logo图片中删除图片。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.LogoDeleteBySign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             logo商标识别—删除接口
+             使用删除接口请先在[控制台](https://console.bce.baidu.com/ai/#/ai/imagerecognition/overview/index)创建应用并申请建库，建库成功后先调用入库接口完成logo图片入库，删除接口用户在已入库的logo图片中删除图片。
+             </summary>
+             <param name="contSign">图片签名（和image二选一，image优先级更高）</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.AnimalDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             动物识别接口
+             该请求用于识别一张图片。即对于输入的一张图片（可正常解码，且长宽比适宜），输出动物识别结果
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>top_num</c>: 返回预测得分top结果数，默认为6 </item>
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.PlantDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             植物识别接口
+             该请求用于识别一张图片。即对于输入的一张图片（可正常解码，且长宽比适宜），输出植物识别结果。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.ObjectDetect(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             图像主体检测接口
+             用户向服务请求检测图像中的主体位置。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>with_face</c>: 如果检测主体是人，主体区域是否带上人脸部分，0-不带人脸区域，其他-带人脸区域，裁剪类需求推荐带人脸，检索/识别类需求推荐不带人脸。默认取1，带人脸。 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.Landmark(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             地标识别接口
+             该请求用于识别地标，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的地标识别结果。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.Flower(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             花卉识别接口
+             检测用户上传的花卉图片，输出图片的花卉识别结果名称及对应的概率打分。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>top_num</c>: 返回预测得分top结果数，默认为5 </item>
+                       <item>  <c>baike_num</c>: 返回百科信息的结果数，默认不返回 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.Ingredient(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             食材识别接口
+             该请求用于识别果蔬类食材，即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片中的果蔬食材结果。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>top_num</c>: 返回预测得分top结果数，如果为空或小于等于0默认为5；如果大于20默认20 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.Redwine(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             红酒识别接口
+             该服务用于识别红酒标签，即对于输入的一张图片（可正常解码，长宽比适宜，且酒标清晰可见），输出图片中的红酒名称、国家、产区、酒庄、类型、糖分、葡萄品种、酒品描述等信息。可识别数十万中外常见红酒。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageClassify.ImageClassify.Currency(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             货币识别接口
+             识别图像中的货币类型，以纸币为主，正反面均可准确识别，接口返回货币的名称、代码、面值、年份信息；可识别各类近代常见货币，如美元、欧元、英镑、法郎、澳大利亚元、俄罗斯卢布、日元、韩元、泰铢、印尼卢比等。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="T:Baidu.Aip.ImageProcess.ImageProcess">
+            <summary>
+            图像处理
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.ImageProcess.ImageProcess.ImageQualityEnhance(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             图像无损放大接口
+             输入一张图片，可以在尽量保持图像质量的条件下，将图像在长宽方向各放大两倍。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageProcess.ImageProcess.Dehaze(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             图像去雾接口
+             对浓雾天气下拍摄，导致细节无法辨认的图像进行去雾处理，还原更清晰真实的图像。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageProcess.ImageProcess.ContrastEnhance(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             图像对比度增强接口
+             调整过暗或者过亮图像的对比度，使图像更加鲜明。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageProcess.ImageProcess.Colourize(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             黑白图像上色接口
+             智能识别黑白图像内容并填充色彩，使黑白图像变得鲜活。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageProcess.ImageProcess.StretchRestore(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             拉伸图像恢复接口
+             自动识别过度拉伸的图像，将图像内容恢复成正常比例。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="T:Baidu.Aip.ImageSearch.ImageSearch">
+            <summary>
+            图像搜索
+            </summary>
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqAdd(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqAddUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.SameHqSearch(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             相同图检索—检索接口
+             完成入库后，可使用该接口实现相同图检索。**支持传入指定分类维度（具体变量tags）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息。**
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>tags</c>: 1 - 65535范围内的整数，tag间以逗号分隔，最多2个tag。样例："100,11" ；检索时可圈定分类维度进行检索 </item>
+                       <item>  <c>tag_logic</c>: 检索时tag之间的逻辑， 0：逻辑and，1：逻辑or </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.SameHqSearchUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             相同图检索—检索接口
+             完成入库后，可使用该接口实现相同图检索。**支持传入指定分类维度（具体变量tags）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息。**
+             </summary>
+             <param name="url">图片完整URL，URL长度不超过1024字节，URL对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式，当image字段存在时url字段失效</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>tags</c>: 1 - 65535范围内的整数，tag间以逗号分隔，最多2个tag。样例："100,11" ；检索时可圈定分类维度进行检索 </item>
+                       <item>  <c>tag_logic</c>: 检索时tag之间的逻辑， 0：逻辑and，1：逻辑or </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqUpdate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqUpdateUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqUpdateContSign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqDeleteByImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqDeleteByUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SameHqDeleteBySign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarAdd(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarAddUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.SimilarSearch(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             相似图检索—检索接口
+             完成入库后，可使用该接口实现相似图检索。**支持传入指定分类维度（具体变量tags）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息。**
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>tags</c>: 1 - 65535范围内的整数，tag间以逗号分隔，最多2个tag。样例："100,11" ；检索时可圈定分类维度进行检索 </item>
+                       <item>  <c>tag_logic</c>: 检索时tag之间的逻辑， 0：逻辑and，1：逻辑or </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.SimilarSearchUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             相似图检索—检索接口
+             完成入库后，可使用该接口实现相似图检索。**支持传入指定分类维度（具体变量tags）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息。**
+             </summary>
+             <param name="url">图片完整URL，URL长度不超过1024字节，URL对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式，当image字段存在时url字段失效</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>tags</c>: 1 - 65535范围内的整数，tag间以逗号分隔，最多2个tag。样例："100,11" ；检索时可圈定分类维度进行检索 </item>
+                       <item>  <c>tag_logic</c>: 检索时tag之间的逻辑， 0：逻辑and，1：逻辑or </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarUpdate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarUpdateUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarUpdateContSign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarDeleteByImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarDeleteByUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.SimilarDeleteBySign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductAdd(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductAddUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.ProductSearch(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             商品检索—检索接口
+             完成入库后，可使用该接口实现商品检索。**支持传入指定分类维度（具体变量class_id1、class_id2）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息**
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>class_id1</c>: 商品分类维度1，支持1-60范围内的整数。检索时可圈定该分类维度进行检索 </item>
+                       <item>  <c>class_id2</c>: 商品分类维度1，支持1-60范围内的整数。检索时可圈定该分类维度进行检索 </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.ImageSearch.ImageSearch.ProductSearchUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             商品检索—检索接口
+             完成入库后，可使用该接口实现商品检索。**支持传入指定分类维度（具体变量class_id1、class_id2）进行检索，返回结果支持翻页（具体变量pn、rn）。****请注意，检索接口不返回原图，仅反馈当前填写的brief信息，请调用入库接口时尽量填写可关联至本地图库的图片id或者图片url等信息**
+             </summary>
+             <param name="url">图片完整URL，URL长度不超过1024字节，URL对应的图片base64编码后大小不超过4M，最短边至少15px，最长边最大4096px,支持jpg/png/bmp格式，当image字段存在时url字段失效</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>class_id1</c>: 商品分类维度1，支持1-60范围内的整数。检索时可圈定该分类维度进行检索 </item>
+                       <item>  <c>class_id2</c>: 商品分类维度1，支持1-60范围内的整数。检索时可圈定该分类维度进行检索 </item>
+                       <item>  <c>pn</c>: 分页功能，起始位置，例：0。未指定分页时，默认返回前300个结果；接口返回数量最大限制1000条，例如：起始位置为900，截取条数500条，接口也只返回第900 - 1000条的结果，共计100条 </item>
+                       <item>  <c>rn</c>: 分页功能，截取条数，例：250 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductUpdate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductUpdateUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductUpdateContSign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductDeleteByImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductDeleteByUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.ImageSearch.ImageSearch.ProductDeleteBySign(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="T:Baidu.Aip.Kg.Pie">
+            <summary>
+            知识图谱
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.CreateTask(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             创建任务接口
+             创建一个新的信息抽取任务
+             </summary>
+             <param name="name">任务名字</param>
+             <param name="templateContent">json string 解析模板内容</param>
+             <param name="inputMappingFile">抓取结果映射文件的路径</param>
+             <param name="outputFile">输出文件名字</param>
+             <param name="urlPattern">url pattern</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>limit_count</c>: 限制解析数量limit_count为0时进行全量任务，limit_count&gt;0时只解析limit_count数量的页面 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.UpdateTask(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             更新任务接口
+             更新任务配置，在任务重新启动后生效
+             </summary>
+             <param name="id">任务ID</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>name</c>: 任务名字 </item>
+                       <item>  <c>template_content</c>: json string 解析模板内容 </item>
+                       <item>  <c>input_mapping_file</c>: 抓取结果映射文件的路径 </item>
+                       <item>  <c>url_pattern</c>: url pattern </item>
+                       <item>  <c>output_file</c>: 输出文件名字 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.TaskInfo(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             获取任务详情接口
+             根据任务id获取单个任务的详细信息
+             </summary>
+             <param name="id">任务ID</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.TaskQuery(System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             以分页的方式查询当前用户所有的任务信息接口
+             该请求用于菜品识别。即对于输入的一张图片（可正常解码，且长宽比适宜），输出图片的菜品名称、卡路里信息、置信度。
+             </summary>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>id</c>: 任务ID，精确匹配 </item>
+                       <item>  <c>name</c>: 中缀模糊匹配,abc可以匹配abc,aaabc,abcde等 </item>
+                       <item>  <c>status</c>: 要筛选的任务状态 </item>
+                       <item>  <c>page</c>: 页码 </item>
+                       <item>  <c>per_page</c>: 页码 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.TaskStart(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             启动任务接口
+             启动一个已经创建的信息抽取任务
+             </summary>
+             <param name="id">任务ID</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Kg.Pie.TaskStatus(System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             查询任务状态接口
+             查询指定的任务的最新执行状态
+             </summary>
+             <param name="id">任务ID</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="T:Baidu.Aip.Nlp.Nlp">
+            <summary>
+            自然语言处理
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Lexer(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             词法分析接口
+             词法分析接口向用户提供分词、词性标注、专名识别三大功能；能够识别出文本串中的基本词汇（分词），对这些词汇进行重组、标注组合后词汇的词性，并进一步识别出命名实体。
+             </summary>
+             <param name="text">待分析文本（目前仅支持GBK编码），长度不超过65536字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.LexerCustom(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             词法分析（定制版）接口
+             词法分析接口向用户提供分词、词性标注、专名识别三大功能；能够识别出文本串中的基本词汇（分词），对这些词汇进行重组、标注组合后词汇的词性，并进一步识别出命名实体。
+             </summary>
+             <param name="text">待分析文本（目前仅支持GBK编码），长度不超过65536字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.DepParser(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             依存句法分析接口
+             依存句法分析接口可自动分析文本中的依存句法结构信息，利用句子中词与词之间的依存关系来表示词语的句法结构信息（如“主谓”、“动宾”、“定中”等结构关系），并用树状结构来表示整句的结构（如“主谓宾”、“定状补”等）。
+             </summary>
+             <param name="text">待分析文本（目前仅支持GBK编码），长度不超过256字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>mode</c>: 模型选择。默认值为0，可选值mode=0（对应web模型）；mode=1（对应query模型） </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordEmbedding(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             词向量表示接口
+             词向量表示接口提供中文词向量的查询功能。
+             </summary>
+             <param name="word">文本内容（GBK编码），最大64字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.DnnlmCn(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             DNN语言模型接口
+             中文DNN语言模型接口用于输出切词结果并给出每个词在句子中的概率值,判断一句话是否符合语言表达习惯。
+             </summary>
+             <param name="text">文本内容（GBK编码），最大512字节，不需要切词</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.WordSimEmbedding(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             词义相似度接口
+             输入两个词，得到两个词的相似度结果。
+             </summary>
+             <param name="word1">词1（GBK编码），最大64字节</param>
+             <param name="word2">词1（GBK编码），最大64字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>mode</c>: 预留字段，可选择不同的词义相似度模型。默认值为0，目前仅支持mode=0 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Simnet(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             短文本相似度接口
+             短文本相似度接口用来判断两个文本的相似度得分。
+             </summary>
+             <param name="text1">待比较文本1（GBK编码），最大512字节</param>
+             <param name="text2">待比较文本2（GBK编码），最大512字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>model</c>: 默认为"BOW"，可选"BOW"、"CNN"与"GRNN" </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.CommentTag(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             评论观点抽取接口
+             评论观点抽取接口用来提取一条评论句子的关注点和评论观点，并输出评论观点标签及评论观点极性。
+             </summary>
+             <param name="text">评论内容（GBK编码），最大10240字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>type</c>: 评论行业类型，默认为4（餐饮美食） </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.SentimentClassify(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             情感倾向分析接口
+             对包含主观观点信息的文本进行情感极性类别（积极、消极、中性）的判断，并给出相应的置信度。
+             </summary>
+             <param name="text">文本内容（GBK编码），最大102400字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Keyword(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             文章标签接口
+             文章标签服务能够针对网络各类媒体文章进行快速的内容理解，根据输入含有标题的文章，输出多个内容标签以及对应的置信度，用于个性化推荐、相似文章聚合、文本内容分析等场景。
+             </summary>
+             <param name="title">篇章的标题，最大80字节</param>
+             <param name="content">篇章的正文，最大65535字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Topic(System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             文章分类接口
+             对文章按照内容类型进行自动分类，首批支持娱乐、体育、科技等26个主流内容类型，为文章聚类、文本内容分析等应用提供基础技术支持。
+             </summary>
+             <param name="title">篇章的标题，最大80字节</param>
+             <param name="content">篇章的正文，最大65535字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Ecnet(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             文本纠错接口
+             识别输入文本中有错误的片段，提示错误并给出正确的文本结果。支持短文本、长文本、语音等内容的错误识别，纠错是搜索引擎、语音识别、内容审查等功能更好运行的基础模块之一。
+             </summary>
+             <param name="text">待纠错文本，输入限制511字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.Emotion(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             对话情绪识别接口接口
+             针对用户日常沟通文本背后所蕴含情绪的一种直观检测，可自动识别出当前会话者所表现出的情绪类别及其置信度，可以帮助企业更全面地把握产品服务质量、监控客户服务质量
+             </summary>
+             <param name="text">待识别情感文本，输入限制512字节</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>scene</c>: default（默认项-不区分场景），talk（闲聊对话-如度秘聊天等），task（任务型对话-如导航对话等），customer_service（客服对话-如电信/银行客服等） </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Nlp.Nlp.NewsSummary(System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             新闻摘要接口接口
+             自动抽取新闻文本中的关键信息，进而生成指定长度的新闻摘要
+             </summary>
+             <param name="content">字符串（限3000字符数以内）字符串仅支持GBK编码，长度需小于3000字符数（即6000字节），请输入前确认字符数没有超限，若字符数超长会返回错误。正文中如果包含段落信息，请使用"\n"分隔，段落信息算法中有重要的作用，请尽量保留</param>
+             <param name="maxSummaryLen">此数值将作为摘要结果的最大长度。例如：原文长度1000字，本参数设置为150，则摘要结果的最大长度是150字；推荐最优区间：200-500字</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>title</c>: 字符串（限200字符数）字符串仅支持GBK编码，长度需小于200字符数（即400字节），请输入前确认字符数没有超限，若字符数超长会返回错误。标题在算法中具有重要的作用，若文章确无标题，输入参数的“标题”字段为空即可 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="T:Baidu.Aip.Ocr.Ocr">
+            <summary>
+            通用文字识别
+            </summary>
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.GeneralBasic(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.GeneralBasicUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.AccurateBasic(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.General(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.GeneralUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.Accurate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.GeneralEnhanced(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.GeneralEnhancedUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.WebImage(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.WebImageUrl(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.Idcard(System.Byte[],System.String,System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Ocr.Ocr.Bankcard(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             银行卡识别接口
+             识别银行卡并返回卡号和发卡行。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.DrivingLicense(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.VehicleLicense(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Ocr.Ocr.LicensePlate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             车牌识别接口
+             识别机动车车牌，并返回签发地和号牌。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>multi_detect</c>: 是否检测多张车牌，默认为false，当置为true的时候可以对一张图片内的多张车牌进行识别 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.BusinessLicense(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             营业执照识别接口
+             识别营业执照，并返回关键字段的值，包括单位名称、法人、地址、有效期、证件编号、社会信用代码等。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.Receipt(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Ocr.Ocr.TrainTicket(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             火车票识别接口
+             支持对大陆火车票的车票号、始发站、目的站、车次、日期、票价、席别、姓名进行结构化识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TaxiReceipt(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             出租车票识别接口
+             针对出租车票（现支持北京）的发票号码、发票代码、车号、日期、时间、金额进行结构化识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Form(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             表格文字识别同步接口接口
+             自动识别表格线及表格内容，结构化输出表头、表尾及每个单元格的文字内容。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TableRecognitionRequest(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             表格文字识别接口
+             自动识别表格线及表格内容，结构化输出表头、表尾及每个单元格的文字内容。表格文字识别接口为异步接口，分为两个API：提交请求接口、获取结果接口。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TableRecognitionGetResult(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             表格识别结果接口
+             获取表格文字识别结果
+             </summary>
+             <param name="requestId">发送表格文字识别请求时返回的request id</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>result_type</c>: 期望获取结果的类型，取值为“excel”时返回xls文件的地址，取值为“json”时返回json格式的字符串,默认为”excel” </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.VinCode(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             VIN码识别接口
+             对车辆车架上、挡风玻璃上的VIN码进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.QuotaInvoice(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             定额发票识别接口
+             对各类定额发票的代码、号码、金额进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.HouseholdRegister(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             户口本识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对出生地、出生日期、姓名、民族、与户主关系、性别、身份证号码字段进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.HkMacauExitentrypermit(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             港澳通行证识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对港澳通行证证号、姓名、姓名拼音、性别、有效期限、签发地点、出生日期字段进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TaiwanExitentrypermit(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             台湾通行证识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对台湾通行证证号、签发地、出生日期、姓名、姓名拼音、性别、有效期字段进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.BirthCertificate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             出生医学证明识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对台湾通行证证号、签发地、出生日期、姓名、姓名拼音、性别、有效期字段进行识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.VehicleInvoice(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             机动车销售发票识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】识别机动车销售发票号码、代码、日期、价税合计等14个字段
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.VehicleCertificate(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             车辆合格证识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】识别车辆合格证编号、车架号、排放标准、发动机编号等12个字段
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Invoice(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             税务局通用机打发票识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对国家/地方税务局发行的横/竖版通用机打发票的号码、代码、日期、合计金额、类型、商品名称字段进行结构化识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>location</c>: 是否输出位置信息，true：输出位置信息，false：不输出位置信息，默认false </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.AirTicket(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             行程单识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对飞机行程单中的姓名、始发站、目的站、航班号、日期、票价字段进行结构化识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>location</c>: 是否输出位置信息，true：输出位置信息，false：不输出位置信息，默认false </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.InsuranceDocuments(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             保单识别接口
+             【此接口需要您在[申请页面](https://cloud.baidu.com/survey/AICooperativeConsultingApply.html)中提交合作咨询开通权限】对各类保单中投保人、受益人的各项信息、保费、保险名称等字段进行结构化识别
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>rkv_business</c>: 是否进行商业逻辑处理，rue：进行商业逻辑处理，false：不进行商业逻辑处理，默认true </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.VatInvoice(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             增值税发票识别接口
+             此接口需要您在页面中提交合作咨询开通权限】 识别并结构化返回增值税发票的各个字段及其对应值，包含了发票基础信息9项，货物相关信息12项，购买方/销售方的名称、识别号、地址电话、开户行及账号，共29项结构化字段。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Qrcode(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             二维码识别接口
+             【此接口需要您在[页面](http://ai.baidu.com/tech/ocr)中提交合作咨询开通权限识别条形码、二维码中包含的URL或其他信息内容
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <!-- 对于成员“M:Baidu.Aip.Ocr.Ocr.Numbers(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})”忽略有格式错误的 XML 注释 -->
+        <member name="M:Baidu.Aip.Ocr.Ocr.Lottery(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             彩票识别接口
+             【此接口需要您在[页面](http://ai.baidu.com/tech/ocr)中提交合作咨询开通权限】对大乐透、双色球彩票进行识别，并返回识别结果
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>recognize_granularity</c>: 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Passport(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             护照识别接口
+             【此接口需要您在[页面](http://ai.baidu.com/tech/ocr)中提交合作咨询开通权限】支持对中国大陆居民护照的资料页进行结构化识别，包含国家码、姓名、性别、护照号、出生日期、签发日期、有效期至、签发地点。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.BusinessCard(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             名片识别接口
+             【此接口需要您在[页面](http://ai.baidu.com/tech/ocr)中提交合作咨询开通权限】提供对各类名片的结构化识别功能，提取姓名、邮编、邮箱、电话、网址、地址、手机号字段
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Handwriting(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             手写文字识别接口
+             【此接口需要您在[页面](http://ai.baidu.com/tech/ocr)中提交合作咨询开通权限】提供对各类名片的结构化识别功能，提取姓名、邮编、邮箱、电话、网址、地址、手机号字段
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>recognize_granularity</c>: 是否定位单字符位置，big：不定位单字符位置，默认值；small：定位单字符位置 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.Custom(System.Byte[],System.Collections.Generic.Dictionary{System.String,System.Object})">
+             <summary>
+             自定义模板文字识别接口
+             自定义模板文字识别，是针对百度官方没有推出相应的模板，但是当用户需要对某一类卡证/票据（如房产证、军官证、火车票等）进行结构化的提取内容时，可以使用该产品快速制作模板，进行识别。
+             </summary>
+             <param name="image">二进制图像数据</param>
+             <param name="options"> 可选参数对象，key: value都为string类型，可选的参数包括
+                 <list type="bullet">
+                       <item>  <c>templateSign</c>: 您在自定义文字识别平台制作的模板的ID </item>
+                       <item>  <c>classifierId</c>: 分类器Id。这个参数和templateSign至少存在一个，优先使用templateSign。存在templateSign时，表示使用指定模板；如果没有templateSign而有classifierId，表示使用分类器去判断使用哪个模板 </item>
+                 </list>
+             </param>
+             <return>JObject</return>
+            
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TableRecognition(System.Byte[],System.Int64,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                识别表格（同步接口）
+            </summary>
+            <param name="image"></param>
+            <param name="timeoutMiliseconds"></param>
+            <param name="options">请求识别时的可选参数</param>
+            <returns></returns>
+            <exception cref="T:Baidu.Aip.AipException"></exception>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TableRecognitionToJson(System.Byte[],System.Int64,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                识别为Json结果返回。 会在后台自动刷新结果，直至返回结果或超时
+            </summary>
+            <param name="image"></param>
+            <param name="timeoutMiliseconds">超时时间</param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Ocr.Ocr.TableRecognitionToExcel(System.Byte[],System.Int64,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                识别为Excel结果返回。 会在后台自动刷新结果，直至返回结果或超时
+            </summary>
+            <param name="image"></param>
+            <param name="timeoutMiliseconds"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Baidu.Aip.Speech.Asr">
+            <summary>
+                语音识别相关接口
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Speech.Asr.Recognize(System.Byte[],System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                识别语音数据
+            </summary>
+            <param name="data"></param>
+            <param name="format"></param>
+            <param name="rate"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Speech.Asr.Recognize(System.String,System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                识别URL
+            </summary>
+            <param name="url"></param>
+            <param name="callback"></param>
+            <param name="format"></param>
+            <param name="rate"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Speech.Asr.RecognizePro(System.Byte[],System.String,System.Int32,System.Int32,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            语音识别极速版
+            </summary>
+            <param name="data">语音数据</param>
+            <param name="format">格式：pcm amr</param>
+            <param name="rate">16000</param>
+            <param name="devPid"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Baidu.Aip.Speech.Asr.Recognize(System.IO.Stream,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            流式识别接口(experimental)
+            </summary>
+            <param name="speech">语音数据，CanRead</param>
+            <param name="cuid">设备ID，可以填写mac地址</param>
+            <param name="format">pcm</param>
+            <param name="rate">16000</param>
+            <param name="pid">模型id，具体值参考文档</param>
+            <returns></returns>
+            <exception cref="T:Baidu.Aip.AipException"></exception>
+        </member>
+        <member name="T:Baidu.Aip.Speech.TtsResponse">
+            <summary>
+                语音合成结果
+            </summary>
+        </member>
+        <member name="P:Baidu.Aip.Speech.TtsResponse.Data">
+            <summary>
+                语音数据内容
+            </summary>
+        </member>
+        <member name="T:Baidu.Aip.Speech.Tts">
+            <summary>
+                语音合成相关接口
+            </summary>
+        </member>
+        <member name="M:Baidu.Aip.Speech.Tts.Synthesis(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+                语音合成
+            </summary>
+            <param name="text">需要合成的内容</param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
