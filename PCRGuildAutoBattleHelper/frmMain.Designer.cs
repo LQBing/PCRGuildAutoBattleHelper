@@ -50,7 +50,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(112, 48);
             this.pictureBox1.TabIndex = 1;
@@ -76,6 +76,7 @@
             // 
             // tmReadSeconds
             // 
+            this.tmReadSeconds.Interval = 550;
             this.tmReadSeconds.Tick += new System.EventHandler(this.tmReadSeconds_Tick);
             // 
             // frmMain
