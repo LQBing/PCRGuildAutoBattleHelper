@@ -1,7 +1,6 @@
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.exe.config
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.exe
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.pdb
-F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.csprojAssemblyReference.cache
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.Properties.Resources.resources
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.csproj.GenerateResource.cache
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.csproj.CoreCompileInputs.cache
@@ -17,3 +16,4 @@ F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debu
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.application
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.exe.manifest
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.application
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.csprojAssemblyReference.cache

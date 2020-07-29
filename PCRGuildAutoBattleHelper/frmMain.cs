@@ -11,6 +11,7 @@ using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace PCRGuildAutoBattleHelper
 {
@@ -56,8 +57,12 @@ namespace PCRGuildAutoBattleHelper
 
             if (myhandle != IntPtr.Zero)
             {
-                PostMessage(myhandle, WM_LBUTTONDOWN, 0, x + (y << 16));
-                PostMessage(myhandle, WM_LBUTTONUP, 0, x + (y << 16));
+                for(int i = 0; i < 10; i++)
+                {
+                    PostMessage(myhandle, WM_LBUTTONDOWN, 0, x + (y << 16));
+                    PostMessage(myhandle, WM_LBUTTONUP, 0, x + (y << 16));
+                    Thread.Sleep(1);
+                }             
                 return true;
             }
             return false;
@@ -268,77 +273,79 @@ namespace PCRGuildAutoBattleHelper
                 {
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
-                    DateTime dt = new DateTime();
-                    dt = Convert.ToDateTime(rz);
                     //=======================从这里开始写轴===========================
-                    if (dt == Convert.ToDateTime("01:05"))
+                    if (rz == "1:05")
                     {
                         //香织
                         ClickCharacter(2);
                     }
-                    if (dt == Convert.ToDateTime("01:02"))
+                    if (rz == "1:02")
                     {
                         //真琴
                         ClickCharacter(3);
                     }
-                    if (dt == Convert.ToDateTime("00:49"))
+                    if (rz == "0:49")
                     {
                         //宫子
                         ClickCharacter(1);
+                        //必要间隔
+                        Thread.Sleep(1);
                         //香织
                         ClickCharacter(2);
                     }
-                    if (dt == Convert.ToDateTime("00:47"))
+                    if (rz =="0:47")
                     {
                         //深月
                         ClickCharacter(5);
                     }
-                    if (dt == Convert.ToDateTime("00:45"))
+                    if (rz =="0:45")
                     {
                         //可可萝
                         ClickCharacter(4);
                     }
-                    if (dt == Convert.ToDateTime("00:43"))
+                    if (rz =="0:43")
                     {
                         //真琴
                         ClickCharacter(3);
                     }
-                    if (dt == Convert.ToDateTime("00:32"))
+                    if (rz =="0:32")
                     {
                         //香织
                         ClickCharacter(2);
                     }
-                    if (dt == Convert.ToDateTime("00:21"))
+                    if (rz =="0:21")
                     {
                         //真琴
                         ClickCharacter(3);
                     }
-                    if (dt == Convert.ToDateTime("00:15"))
+                    if (rz =="0:15")
                     {
                         //深月
                         ClickCharacter(5);
                     }
-                    if (dt == Convert.ToDateTime("00:13"))
+                    if (rz =="0:13")
                     {
                         //香织
                         ClickCharacter(2);
                         //宫子
                         ClickCharacter(1);                       
                     }
-                    if (dt == Convert.ToDateTime("00:09"))
+                    if (rz =="0:09")
                     {
                         //可可萝
                         ClickCharacter(4);
                     }
-                    if (dt == Convert.ToDateTime("00:03"))
+                    if (rz =="0:03")
                     {
                         //真琴
                         ClickCharacter(3);
+                        //必要间隔
+                        Thread.Sleep(1);
                         //香织
                         ClickCharacter(2);
                     }
                     //因为我是3星宫子，所以补了一下伤害，其实还可以更高，注意四星狼
-                    if (dt == Convert.ToDateTime("00:01"))
+                    if (rz =="0:01")
                     {
                         //宫子
                         ClickCharacter(1);
