@@ -13,3 +13,7 @@ F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debu
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\Newtonsoft.Json.xml
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.frmMain.resources
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.frmLogin.resources
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.exe.manifest
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.application
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.exe.manifest
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.application
