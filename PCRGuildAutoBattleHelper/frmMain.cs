@@ -274,82 +274,86 @@ namespace PCRGuildAutoBattleHelper
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
                     //=======================从这里开始写轴===========================
-                    if (rz == "1:05")
+                    if (rz == "1:06")
+                    {
+                        //真琴
+                        ClickCharacter(3);
+                        //---------必要间隔-----------
+                        Thread.Sleep(1);
+                        //香织
+                        ClickCharacter(1);
+                        //---------必要间隔-----------
+                        Thread.Sleep(1);
+                        //日和莉
+                        ClickCharacter(4);
+                    }                  
+                    if (rz == "0:57")
+                    {
+                        //望
+                        ClickCharacter(2);                      
+                    }
+                    if (rz == "0:50")
                     {
                         //香织
-                        ClickCharacter(2);
+                        ClickCharacter(1);
+                        //---------必要间隔-----------
+                        Thread.Sleep(1);
+                        //日和莉
+                        ClickCharacter(4);
                     }
-                    if (rz == "1:02")
+                    if (rz == "0:47")
                     {
                         //真琴
                         ClickCharacter(3);
                     }
-                    if (rz == "0:49")
-                    {
-                        //宫子
-                        ClickCharacter(1);
-                        //必要间隔
-                        Thread.Sleep(1);
-                        //香织
-                        ClickCharacter(2);
-                    }
-                    if (rz =="0:47")
+                    if (rz == "0:45")
                     {
                         //深月
                         ClickCharacter(5);
                     }
-                    if (rz =="0:45")
-                    {
-                        //可可萝
-                        ClickCharacter(4);
-                    }
-                    if (rz =="0:43")
-                    {
-                        //真琴
-                        ClickCharacter(3);
-                    }
-                    if (rz =="0:32")
+                    if (rz == "0:34")
                     {
                         //香织
+                        ClickCharacter(1);
+                        //---------必要间隔-----------
+                        Thread.Sleep(1);
+                        //日和莉
+                        ClickCharacter(4);
+                    }
+                    if (rz == "0:29")
+                    {
+                        //望
                         ClickCharacter(2);
                     }
-                    if (rz =="0:21")
+                    if (rz == "0:26")
                     {
                         //真琴
                         ClickCharacter(3);
                     }
-                    if (rz =="0:15")
+                    if (rz == "0:16")
+                    {
+                        //香织
+                        ClickCharacter(1);
+                        //---------必要间隔-----------
+                        Thread.Sleep(1);
+                        //日和莉
+                        ClickCharacter(4);
+                    }
+                    if (rz == "0:11")
                     {
                         //深月
                         ClickCharacter(5);
                     }
-                    if (rz =="0:13")
-                    {
-                        //香织
-                        ClickCharacter(2);
-                        //宫子
-                        ClickCharacter(1);                       
-                    }
-                    if (rz =="0:09")
-                    {
-                        //可可萝
-                        ClickCharacter(4);
-                    }
-                    if (rz =="0:03")
+                    if (rz == "0:06")
                     {
                         //真琴
                         ClickCharacter(3);
-                        //必要间隔
-                        Thread.Sleep(1);
-                        //香织
-                        ClickCharacter(2);
                     }
-                    //因为我是3星宫子，所以补了一下伤害，其实还可以更高，注意四星狼
-                    if (rz =="0:01")
+                    if (rz == "0:01")
                     {
-                        //宫子
+                        //香织
                         ClickCharacter(1);
-                    }
+                    }                 
                 }
                 else
                 {
