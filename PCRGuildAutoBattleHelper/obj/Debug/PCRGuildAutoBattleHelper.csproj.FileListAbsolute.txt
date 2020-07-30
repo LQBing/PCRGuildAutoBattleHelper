@@ -16,3 +16,4 @@ F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debu
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\bin\Debug\PCRGuildAutoBattleHelper.application
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.exe.manifest
 F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.application
+F:\workspace\PCRTools\PCRGuildAutoBattleHelper\PCRGuildAutoBattleHelper\obj\Debug\PCRGuildAutoBattleHelper.csprojAssemblyReference.cache

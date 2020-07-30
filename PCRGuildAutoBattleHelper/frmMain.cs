@@ -274,78 +274,69 @@ namespace PCRGuildAutoBattleHelper
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
                     //=======================从这里开始写轴===========================
-                    if (rz == "1:03")
+                    if (rz == "1:05")
                     {
-                        //真琴
-                        ClickCharacter(1);
-                        //---------------------------
-                        Thread.Sleep(1);
-                        //TP弓
-                        ClickCharacter(5);
-                        //---------------------------
-                        Thread.Sleep(1);
-                        //铃奈
-                        ClickCharacter(4);
-
-                    }
-                    if (rz == "0:58")
-                    {
-                        //由加莉
+                        //伊莉雅
                         ClickCharacter(2);
                     }
-                    if (rz == "0:49")
+                    if (rz=="1:03")
                     {
-                        //TP弓
-                        ClickCharacter(5);
-                    }
-                    if (rz == "0:47")
-                    {
-                        //真琴
+                        //珠希
                         ClickCharacter(1);
-                        //---------------------------
-                        Thread.Sleep(1);
-                        //铃奈
-                        ClickCharacter(4);
-                        //---------------------------
-                        Thread.Sleep(1);
-                        //深月
-                        ClickCharacter(3);
                     }
-                    if (rz == "0:31")
+                    if (rz == "0:45")
                     {
-                        //TP弓
+                        //镜华
                         ClickCharacter(5);
                     }
-                    if (rz == "0:27")
+                    if (rz == "0:44")
                     {
-                        //真琴
+                        //伊莉雅
+                        ClickCharacter(2);
+                    }
+                    if (rz == "0:43")
+                    {                      
+                        //凯露
+                        ClickCharacter(4);
+                    }
+                    if (rz == "0:38")
+                    {
+                        //茜里
+                        ClickCharacter(3);
+                        Thread.Sleep(1);
+                        //珠希
                         ClickCharacter(1);
                     }
                     if (rz == "0:23")
                     {
-                        //由加莉
+                        //伊莉雅
                         ClickCharacter(2);
                     }
                     if (rz == "0:14")
                     {
-                        //真琴
+                        //珠希
                         ClickCharacter(1);
-                    }
-                    if (rz == "0:12")
-                    {
-                        //TP弓
-                        ClickCharacter(5);
-                        //---------------------------
-                        Thread.Sleep(1);
-                        //铃奈
-                        ClickCharacter(4);
                     }
                     if (rz == "0:10")
                     {
-                        //深月
+                        //镜华
+                        ClickCharacter(5);
+                    }
+                    if (rz == "0:08")
+                    {
+                        //茜里
                         ClickCharacter(3);
                     }
-
+                    if (rz == "0:07")
+                    {
+                        //凯露
+                        ClickCharacter(4);
+                    }
+                    if (rz == "0:05")
+                    {
+                        //伊莉雅
+                        ClickCharacter(2);
+                    }
                 }
                 else
                 {
