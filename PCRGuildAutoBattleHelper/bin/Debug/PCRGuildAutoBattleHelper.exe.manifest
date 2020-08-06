@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PCRGuildAutoBattleHelper.exe" size="27056">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PCRGuildAutoBattleHelper.exe" size="30128">
       <assemblyIdentity name="PCRGuildAutoBattleHelper" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Te+7ochztUS6i1P+GPI7CUZGHXK/m77+DH9+ndO1lrY=</dsig:DigestValue>
+        <dsig:DigestValue>xIyIlhwtUqVr0l/uatox5ZwKodOLK/ZrRnez6kTDvxQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

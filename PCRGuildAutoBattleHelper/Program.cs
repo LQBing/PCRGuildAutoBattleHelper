@@ -18,11 +18,12 @@ namespace PCRGuildAutoBattleHelper
             Application.SetCompatibleTextRenderingDefault(false);
             //实例化APIKey、SecretKey的输入窗体
             frmLogin objFrmLogin = new frmLogin();
-            DialogResult result=objFrmLogin.ShowDialog();
+            DialogResult result = objFrmLogin.ShowDialog();
             if (result == DialogResult.OK)
             {
                 Application.Run(new frmMain());
-            }          
+            }
+            //Application.Run(new frmMain());
         }
         //因为不是由login窗体生成的Main，所以无法进行窗体之间构造方法的传值，这里选择定义全局变量
         public static string ApiKey;

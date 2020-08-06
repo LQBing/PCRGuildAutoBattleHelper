@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace PCRGuildAutoBattleHelper
 {
@@ -201,15 +203,50 @@ namespace PCRGuildAutoBattleHelper
         //========================自己的方法===========================  
         public void AddTextToBoard(string str)
         {
-            textBox1.AppendText(str);
-            textBox1.AppendText(Environment.NewLine);
-            textBox1.ScrollToCaret();
+            tbxEditor.AppendText(str);
+            tbxEditor.AppendText(Environment.NewLine);
+            tbxEditor.ScrollToCaret();
+        }
+        public string ConvertIntToTime(int seconds)
+        {
+            string min = (seconds / 60).ToString();
+            string colon = ":";
+            string sec = (seconds % 60).ToString();
+            if (Convert.ToInt32(sec) / 10 == 0)
+            {
+                sec = "0" + sec;
+            }
+            string UB_Time = min + colon + sec;
+
+            return UB_Time;
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        public int ConvertCharacterNameToNumber(string name)
         {
-            tmReadSeconds.Start();
+            string charaName = name;
+            int num;
+            if (listCharacter.SingleOrDefault(x => x.characterName == charaName)!=null)
+            {
+                 num = listCharacter.SingleOrDefault(x => x.characterName == charaName).characterNum;
+            }
+            else
+            {
+                num = 0;                
+            }
+            return num;
+        }
+    
+        public void ClickCharacterByUBTime(string Now,string UBtime,int num)
+        {
+            if (Now == UBtime)
+            {
+                ClickCharacter(num);
+            }            
+        }
+        public void CleanScript()
+        {
+            listCharacter = null;
+            listUB = null;
         }
         public static byte[] BitmapByte(Bitmap bitmap)
         {
@@ -222,11 +259,8 @@ namespace PCRGuildAutoBattleHelper
                 return data;
             }
         }
-
         private string ApiKey = Program.ApiKey;
         private string SecretKey = Program.SecretKey;
-
-
         public void ClickCharacter(int num)
         {
             if(num==1)
@@ -241,11 +275,126 @@ namespace PCRGuildAutoBattleHelper
                 ClickAndroidScreen(320, 600);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        List<CharacterNumModel> listCharacter = new List<CharacterNumModel>();
+
+        List<CharacterUBModel> listUB = new List<CharacterUBModel>();
+        private void btnReadScript_Click(object sender, EventArgs e)
         {
-            tmReadSeconds.Stop();
+            string str=tbxEditor.Text;
+            //先看存不存在定位
+            if (str.Contains("定位") && str.Contains(";") && str.Contains(",") && str.Contains("(")&&str.Contains(")"))
+            {
+                //以中文分号进行分割
+                string[] strArr = str.Split(';');
+                //获得小括号里面的值
+                string team = Regex.Replace(strArr[0], @"(.*\()(.*)(\).*)", "$2");
+                //分割获得单个角色名
+                string[] teamArr = team.Split(',');
+                //先判断五个参数全不全
+                if (teamArr.Count() == 5)
+                {
+                    //录入名称和参数的对应关系             
+                    for (int i = 0; i < 5; i++)
+                    {
+                        CharacterNumModel ubModel = new CharacterNumModel();
+                        ubModel.characterName = teamArr[i];
+                        ubModel.characterNum = i + 1;
+                        listCharacter.Add(ubModel);
+                    }
+                    //有分号就肯定有第二部分，而且可能是空字符串，非null
+                    if (strArr[1] != "")
+                    {
+                        if (strArr.LastOrDefault() == "")
+                        {
+                            //剔除第一组
+                            ArrayList al = new ArrayList(strArr);
+                            al.RemoveAt(0);
+                            //重新生成StrArr(只包含int，string)
+                            strArr = (string[])al.ToArray(typeof(string));
+                            //确定执行的次数，-1是为了去除末尾的""
+                            for (int i = 0; i < strArr.Count() - 1; i++)
+                            {
+                                //UBCharacter==UBTime+CharacterName
+                                string[] UBcharacter = strArr[i].Split(',');
+                                //Get int time
+                                string time = UBcharacter[0];
+                                //Get string Name
+                                string chara = UBcharacter[1];
+                                //name,int
+                                CharacterUBModel ubModel = new CharacterUBModel();
+                                //string类型的时间转化为int类型
+                                int seconds = Convert.ToInt32(time);
+                                if (seconds >= 0)
+                                {
+                                    //时间，对象
+                                    ubModel.ubTime = ConvertIntToTime(seconds);
+                                    ubModel.clickWho = ConvertCharacterNameToNumber(chara);
+                                    listUB.Add(ubModel);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("请不要输入负数！");
+                                    //将之前录入的脚本清空
+                                    CleanScript();
+                                }
+
+                            }
+                            bool isCorrect = true;
+                            foreach (var item in listUB)
+                            {
+                                if (item.clickWho == 0)
+                                {
+                                    isCorrect = false;
+                                }
+                            }
+                            if (isCorrect == true)
+                            {
+                                MessageBox.Show("脚本读取成功！");
+                                this.tbxEditor.Enabled = false;
+                                this.btnReadScript.Enabled = false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("变量名冲突，请检查！");
+                                //将之前录入的脚本清空
+                                CleanScript();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("请填写完整的脚本！");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("请填写第二部分的脚本！");
+                    }
+                }
+                //5个参数不全
+                else
+                {
+                    MessageBox.Show("请填写5个参数,目前只有"+teamArr.Count().ToString()+"个参数！");
+                }               
+            }
+            else
+            {
+                MessageBox.Show("请按照语法填写！样例：定位（布丁，空花，狗拳，亚莉莎，xcw）；\n");
+            }
+        }
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            tmReadSeconds.Start();                     
         }
 
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            tmReadSeconds.Stop();
+            //将之前录入的脚本清空
+            CleanScript();
+            tbxEditor.Enabled = true;
+        }
+
+        //========================计时器事件===========================
         private void tmReadSeconds_Tick(object sender, EventArgs e)
         {
             Rectangle rect = new System.Drawing.Rectangle();
@@ -274,68 +423,9 @@ namespace PCRGuildAutoBattleHelper
                     //rz = result["words_result"].First.SelectToken("words").ToString();
                     rz = ocrResult.words_result.First.SelectToken("words").ToString();
                     //=======================从这里开始写轴===========================
-                    if (rz == "1:05")
+                    for (int i = 0; i < listUB.Count; i++)
                     {
-                        //伊莉雅
-                        ClickCharacter(2);
-                    }
-                    if (rz=="1:03")
-                    {
-                        //珠希
-                        ClickCharacter(1);
-                    }
-                    if (rz == "0:45")
-                    {
-                        //镜华
-                        ClickCharacter(5);
-                    }
-                    if (rz == "0:44")
-                    {
-                        //伊莉雅
-                        ClickCharacter(2);
-                    }
-                    if (rz == "0:43")
-                    {                      
-                        //凯露
-                        ClickCharacter(4);
-                    }
-                    if (rz == "0:38")
-                    {
-                        //茜里
-                        ClickCharacter(3);
-                        Thread.Sleep(1);
-                        //珠希
-                        ClickCharacter(1);
-                    }
-                    if (rz == "0:23")
-                    {
-                        //伊莉雅
-                        ClickCharacter(2);
-                    }
-                    if (rz == "0:14")
-                    {
-                        //珠希
-                        ClickCharacter(1);
-                    }
-                    if (rz == "0:10")
-                    {
-                        //镜华
-                        ClickCharacter(5);
-                    }
-                    if (rz == "0:08")
-                    {
-                        //茜里
-                        ClickCharacter(3);
-                    }
-                    if (rz == "0:07")
-                    {
-                        //凯露
-                        ClickCharacter(4);
-                    }
-                    if (rz == "0:05")
-                    {
-                        //伊莉雅
-                        ClickCharacter(2);
+                        ClickCharacterByUBTime(rz, listUB[i].ubTime, listUB[i].clickWho);
                     }
                 }
                 else
@@ -344,10 +434,10 @@ namespace PCRGuildAutoBattleHelper
                 }
             }
             AddTextToBoard(rz);
-            
+
 
         }
-        //========================计时器事件===========================
+
         //分辨率1280*720(dpi 240)
         //雷电模拟器4.0.26
         //窗口标题是“雷电模拟器”
